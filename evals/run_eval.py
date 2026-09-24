@@ -71,11 +71,14 @@ def agreement(rows: list[dict]) -> float | None:
     return matches / len(scored)
 
 
-def run(with_llm: bool, llm_model: str) -> None:
+def run(with_llm: bool, llm_model: str, llm_judgments_path: Path | None) -> None:
     dataset = load_dataset(DATASET_PATH)
     router = ModelRouter(preload=True)
 
     llm_broken = False
+    llm_metered = with_llm and llm_judgments_path is None
+    external_judgments = json.loads(llm_judgments_path.read_text()) if llm_judgments_path else None
+
     for row in dataset:
         start = time.perf_counter()
         laya_result = router.pick_model(row["text"])
@@ -84,7 +87,12 @@ def run(with_llm: bool, llm_model: str) -> None:
         row["laya_confidence"] = laya_result.confidence
         row["laya_latency_s"] = time.perf_counter() - start
 
-        if with_llm and not llm_broken:
+        if external_judgments is not None:
+            # Pre-supplied judgments (e.g. a live LLM asked directly, no metered
+            # API call) -- no real latency/token/cost data to report for these.
+            if row["text"] in external_judgments:
+                row["llm_tier"] = external_judgments[row["text"]]
+        elif with_llm and not llm_broken:
             try:
                 judgment = llm_classify(row["text"], model=llm_model)
             except Exception as exc:  # noqa: BLE001 -- any auth/network failure disables the LLM half
@@ -97,13 +105,14 @@ def run(with_llm: bool, llm_model: str) -> None:
                 row["llm_output_tokens"] = judgment.output_tokens
                 row["llm_cost_usd"] = judgment.cost_usd
 
-    report = build_report(dataset, with_llm=with_llm and not llm_broken, llm_model=llm_model)
+    ran_llm = external_judgments is not None or (with_llm and not llm_broken)
+    report = build_report(dataset, with_llm=ran_llm, llm_metered=llm_metered, llm_model=llm_model)
     print(report)
     RESULTS_PATH.write_text(report)
     print(f"\nWrote {RESULTS_PATH}")
 
 
-def build_report(rows: list[dict], with_llm: bool, llm_model: str) -> str:
+def build_report(rows: list[dict], with_llm: bool, llm_metered: bool, llm_model: str) -> str:
     lines = ["# Eval results", ""]
 
     lines.append(f"Laya accuracy: **{accuracy(rows, 'laya_tier'):.0%}** ({len(rows)} examples)")
@@ -125,10 +134,17 @@ def build_report(rows: list[dict], with_llm: bool, llm_model: str) -> str:
         lines.append("")
         lines.append(format_confusion_md(confusion_matrix(rows, "llm_tier")))
         lines.append("")
-        llm_latencies = [r["llm_latency_s"] for r in llm_rows]
-        total_cost = sum(r["llm_cost_usd"] for r in llm_rows)
-        lines.append(f"LLM judge mean latency: {statistics.mean(llm_latencies) * 1000:.1f} ms")
-        lines.append(f"LLM judge total cost: ${total_cost:.5f} for {len(llm_rows)} classifications (${total_cost / len(llm_rows):.6f} each)")
+        if llm_metered:
+            llm_latencies = [r["llm_latency_s"] for r in llm_rows]
+            total_cost = sum(r["llm_cost_usd"] for r in llm_rows)
+            lines.append(f"LLM judge mean latency: {statistics.mean(llm_latencies) * 1000:.1f} ms")
+            lines.append(f"LLM judge total cost: ${total_cost:.5f} for {len(llm_rows)} classifications (${total_cost / len(llm_rows):.6f} each)")
+        else:
+            lines.append(
+                "LLM judge latency/cost: **not measured** -- these judgments came from asking an LLM "
+                "directly rather than a metered API call, so there's no real token/latency data. "
+                "See README for a rough estimate."
+            )
         lines.append("")
         agree = agreement(rows)
         lines.append(f"Laya/LLM agreement: **{agree:.0%}**" if agree is not None else "Laya/LLM agreement: n/a")
@@ -140,10 +156,16 @@ def build_report(rows: list[dict], with_llm: bool, llm_model: str) -> str:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--with-llm", action="store_true", help="Also run the LLM judge baseline.")
+    parser.add_argument("--with-llm", action="store_true", help="Also run the LLM judge baseline (needs Anthropic credentials).")
     parser.add_argument("--llm-model", default=DEFAULT_LLM_MODEL, help="Anthropic model ID to use as the LLM judge.")
+    parser.add_argument(
+        "--llm-judgments",
+        type=Path,
+        default=None,
+        help="JSON file of {text: tier} judgments to use instead of a live API call (no cost/latency data).",
+    )
     args = parser.parse_args()
-    run(with_llm=args.with_llm, llm_model=args.llm_model)
+    run(with_llm=args.with_llm, llm_model=args.llm_model, llm_judgments_path=args.llm_judgments)
 
 
 if __name__ == "__main__":

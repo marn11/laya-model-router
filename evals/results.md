@@ -10,7 +10,19 @@ Laya confusion matrix:
 | **moderate** | 4 | 6 | 0 |
 | **hard** | 0 | 6 | 4 |
 
-Laya mean latency: 56.5 ms
+Laya mean latency: 52.9 ms
 Laya cost: $0 marginal (self-hosted, local inference)
 
-(LLM judge not run -- pass --with-llm with Anthropic credentials set to include it.)
+LLM judge (claude-sonnet-5) accuracy: **100%** (30 examples)
+
+LLM confusion matrix:
+
+| ground truth \ predicted | trivial | moderate | hard |
+| --- | --- | --- | --- |
+| **trivial** | 10 | 0 | 0 |
+| **moderate** | 0 | 10 | 0 |
+| **hard** | 0 | 0 | 10 |
+
+LLM judge latency/cost: **not measured** -- these judgments came from asking an LLM directly rather than a metered API call, so there's no real token/latency data. See README for a rough estimate.
+
+Laya/LLM agreement: **63%**

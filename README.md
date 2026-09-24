@@ -75,11 +75,11 @@ uv run python evals/run_eval.py --with-llm --llm-model claude-haiku-4-5  # also 
 
 - `dataset.jsonl` — 30 hand-curated coding-task descriptions, 10 per tier, each with a one-line rationale. Single-reviewer ground truth, not multi-rater validated — a first real signal, not a calibrated benchmark.
 - `llm_judge.py` — prompts a real Anthropic model to output one of trivial/moderate/hard on the same text, and measures its actual token cost.
-- `run_eval.py` — runs both, reports accuracy vs. ground truth, a confusion matrix, latency, cost, and Laya/LLM agreement. Writes `results.md`.
+- `run_eval.py` — runs both, reports accuracy vs. ground truth, a confusion matrix, latency, cost, and Laya/LLM agreement. Writes `results.md`. Also accepts `--llm-judgments some.json` (a `{text: tier}` map) as a stand-in for the live API call — see below for why that exists and its limits.
 
-### Latest results (Laya only — no LLM judge run yet, no API key available in this environment)
+### Latest results
 
-**Laya accuracy: 63% (30 examples).** Mean latency 56.5ms, $0 marginal cost (local inference). Confusion matrix:
+**Laya accuracy: 63% (30 examples).** Mean latency ~53-57ms across runs, $0 marginal cost (local inference). Confusion matrix:
 
 | ground truth \ predicted | trivial | moderate | hard |
 | --- | --- | --- | --- |
@@ -89,7 +89,13 @@ uv run python evals/run_eval.py --with-llm --llm-model claude-haiku-4-5  # also 
 
 The errors aren't random: Laya is weakest on **hard** tasks (only 4/10 correct — the other 6 all get called "moderate", never "trivial"), and moderate tasks get pulled down toward "trivial" more than up toward "hard". So it never mistakes a hard task for a trivial one (the worst-case error for a routing system), but it under-calls difficulty on the harder end of the spectrum — 63% zero-shot accuracy is real signal, not noise, but not yet something to route production traffic on unsupervised. Matches Laya's own model-card caveat that zero-shot accuracy on specialized tasks is modest.
 
-Once an Anthropic API key is available, rerun with `--with-llm` to get the LLM-judge accuracy/cost/latency numbers and the Laya/LLM agreement rate for a real cost-vs-accuracy comparison.
+**LLM judge — no working API key, so this is not a live-metered run.** No Anthropic/OpenAI key was available in this environment (the OpenAI key on hand had expired). Instead of skipping the comparison, `evals/self_judged_claude.json` holds Claude's own answers to the exact same prompt `llm_judge.py` would have sent via the API, given directly in conversation rather than through a metered call — run via `--llm-judgments evals/self_judged_claude.json`.
+
+That produced 100% "accuracy" and 63% Laya/LLM agreement — but **the accuracy number is not trustworthy**: Claude wrote this dataset's ground-truth labels *and* is the LLM being compared, so of course it agrees with itself. Read the agreement-with-Laya number (63%) as the useful one — it's independent of who's "right". The accuracy number would need a genuinely independent judge (a different model, or the live API call) to mean anything.
+
+**Cost — also not measured, since no metered call happened.** Rough estimate from the prompt's actual size (~90 input tokens, ~5 output tokens per call, at published per-token pricing): **~$0.0001/call on Haiku 4.5, ~$0.0002/call on Sonnet 5** — for 30 classifications, a fraction of a cent either way. Laya's cost is genuinely $0 per call (local inference); the LLM judge's cost floor is not zero, but at this prompt size it's negligible regardless of which model backs it. The real question once a key exists isn't "which is cheaper at 30 calls" (both are basically free) — it's what this looks like at production volume, and whether accuracy is independently verified.
+
+**Next real step:** get a working Anthropic (or other provider) key and run `--with-llm` for real for a genuinely independent, metered comparison — that replaces both caveats above at once.
 
 ## Open questions / next steps
 
