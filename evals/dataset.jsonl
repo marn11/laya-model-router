@@ -1,0 +1,30 @@
+{"text": "rename the variable x to userId in this function", "ground_truth": "trivial", "note": "single obvious renaming, no logic involved"}
+{"text": "add a docstring to this getter method", "ground_truth": "trivial", "note": "mechanical documentation of an obvious one-liner"}
+{"text": "format this JSON config file with consistent indentation", "ground_truth": "trivial", "note": "pure formatting, no semantic decisions"}
+{"text": "fix the typo in this error message string", "ground_truth": "trivial", "note": "single-character text fix"}
+{"text": "add a missing semicolon to this line of code", "ground_truth": "trivial", "note": "syntax fix, no judgment needed"}
+{"text": "capitalize the first letter of this log message", "ground_truth": "trivial", "note": "cosmetic string edit"}
+{"text": "update the copyright year in the file header", "ground_truth": "trivial", "note": "mechanical find-and-replace"}
+{"text": "add a null check before calling .toString() on this variable", "ground_truth": "trivial", "note": "one well-known defensive pattern, single line"}
+{"text": "extract this magic number into a named constant", "ground_truth": "trivial", "note": "mechanical refactor, no behavior change"}
+{"text": "sort these import statements alphabetically", "ground_truth": "trivial", "note": "purely mechanical reordering"}
+{"text": "write a test for UserService.create following the pattern in OrderServiceTest", "ground_truth": "moderate", "note": "requires reading and adapting an existing pattern to new context"}
+{"text": "summarize what changed in this 200-line diff", "ground_truth": "moderate", "note": "requires understanding intent across many lines, not just reading them"}
+{"text": "add input validation to this API endpoint matching the style of the other endpoints in this file", "ground_truth": "moderate", "note": "small judgment call plus pattern matching"}
+{"text": "refactor this function to extract a duplicated block into a helper, keeping behavior identical", "ground_truth": "moderate", "note": "requires care to preserve behavior but is a well-scoped mechanical refactor"}
+{"text": "write a docstring-style summary for this undocumented module by reading its code", "ground_truth": "moderate", "note": "requires comprehension of unfamiliar code, not just pattern following"}
+{"text": "add pagination to this list endpoint following the pattern used elsewhere in the service", "ground_truth": "moderate", "note": "adapting an existing pattern to a new but similar endpoint"}
+{"text": "convert this callback-based function to use async/await, preserving error handling", "ground_truth": "moderate", "note": "mechanical transformation but must preserve subtle error semantics"}
+{"text": "add a new field to this data model and update the corresponding serializer", "ground_truth": "moderate", "note": "touches two coordinated files, low ambiguity"}
+{"text": "write a changelog entry summarizing these three commits", "ground_truth": "moderate", "note": "requires synthesizing intent from several changes"}
+{"text": "add retry logic to this HTTP client call, matching the retry pattern already used in the codebase", "ground_truth": "moderate", "note": "pattern adaptation with some judgment on backoff/error cases"}
+{"text": "find the race condition in this concurrent queue implementation", "ground_truth": "hard", "note": "requires reasoning about interleavings, not just reading code"}
+{"text": "design a sharding strategy for this database to handle 10x write load", "ground_truth": "hard", "note": "open-ended architectural tradeoff, no single obvious answer"}
+{"text": "review this authentication middleware for security vulnerabilities", "ground_truth": "hard", "note": "requires adversarial thinking, not just style/pattern checking"}
+{"text": "diagnose why this service intermittently deadlocks under load", "ground_truth": "hard", "note": "multi-step causal reasoning under uncertainty"}
+{"text": "design the API contract for a new multi-tenant billing system", "ground_truth": "hard", "note": "many interacting constraints, no reference pattern to copy"}
+{"text": "figure out why this distributed cache is returning stale data occasionally", "ground_truth": "hard", "note": "intermittent bug requiring reasoning about consistency/timing"}
+{"text": "propose a migration plan to move this monolith's database to a new schema with zero downtime", "ground_truth": "hard", "note": "high-stakes, multi-step plan with many failure modes to weigh"}
+{"text": "debug why this retry logic sometimes causes duplicate charges to be issued", "ground_truth": "hard", "note": "subtle bug with real-world consequences, requires tracing idempotency"}
+{"text": "evaluate whether this proposed caching layer introduces a cache-stampede risk and design a mitigation", "ground_truth": "hard", "note": "requires anticipating a failure mode, not just implementing a spec"}
+{"text": "identify the root cause of this memory leak that only manifests after 48 hours of uptime", "ground_truth": "hard", "note": "long-horizon, hard-to-reproduce bug requiring deep reasoning"}

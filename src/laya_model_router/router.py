@@ -40,9 +40,9 @@ DIFFICULTY_CRITERIA = [
 _TIER_THRESHOLDS = (1.05, 1.4)  # score < 1.05 -> trivial, < 1.4 -> moderate, else hard
 
 DEFAULT_MODEL_TIERS = {
-    "trivial": "gemini/gemini-2.5-flash",
-    "moderate": "anthropic/claude-haiku-4-5",
-    "hard": "anthropic/claude-sonnet-5",
+    "trivial": "anthropic/claude-haiku-4-5",
+    "moderate": "anthropic/claude-sonnet-5",
+    "hard": "anthropic/claude-opus-5",
 }
 
 _QUESTIONS = {

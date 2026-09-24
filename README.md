@@ -32,7 +32,7 @@ The tradeoff called out on Laya's own model card: zero-shot accuracy on speciali
 
 Build a standalone model router: something that sits **in front of** LLM API calls, uses Laya to score each incoming request's difficulty, and dispatches the request to a backend model chosen for that difficulty tier (e.g. a fast/cheap model for simple requests, a stronger/more expensive model for hard ones) — the same shape of system as Cursor Router or LiteLLM's Jev-based complexity router, but self-hosted and built on an open classifier.
 
-This is deliberately a separate repo from `jev-portal-spotify`. That repo is a fork of Spotify's Portal plugin for coding agents (Claude Code / Codex / Cursor); its `shunt` plugin delegates specific sub-tasks (bulk file reads, boilerplate generation) to a fixed, pre-configured worker model via Portal's AiKA feature, gated by a static line-count threshold — there's no per-request difficulty classification, and it only ever governs a plugin's own tool calls inside an existing Claude Code session, not which model answers a request in the first place. What we're building here is unrelated to that Portal/Claude Code plugin architecture: a router that decides, before any model is called, which model gets the call — which is a different problem and doesn't belong bolted onto a Spotify fork.
+Spotify's Portal `shunt` plugin also delegates work to a worker model, but the decision of whether to delegate is a static line-count check, and the worker model is one fixed model picked ahead of time — there's no per-request difficulty classification. What we're building here is closer to [Cursor Router](https://cursor.com/blog/router): classify each request's difficulty first, then dynamically pick which model answers it.
 
 ## Library usage
 
@@ -64,9 +64,36 @@ Laya's `score` question type is very sensitive to how the `criteria` are worded 
 
 With the short-phrase criteria, tier thresholds (`_TIER_THRESHOLDS` in `router.py`) were hand-picked from that 5-example range — trivial/trivial/moderate/moderate(borderline)/hard all landed where expected, but this is **not a calibrated boundary**, just an MVP starting point. Confidence values were consistently low (0.02–0.27) even when the score ordering was correct, consistent with Laya's own model-card caveat that zero-shot accuracy on specialized tasks is modest. A real eval set (labeled examples, ideally with disagreement resolved by more than one person's judgment) would be needed before trusting this for anything beyond experimentation.
 
+## Evals
+
+`evals/` benchmarks the classifier itself: does Laya's predicted tier match a ground-truth label, how does that compare to just prompting an LLM to classify the same text, and what does each approach cost.
+
+```bash
+uv run python evals/run_eval.py                                          # Laya only, no credentials needed
+uv run python evals/run_eval.py --with-llm --llm-model claude-haiku-4-5  # also runs the LLM judge baseline
+```
+
+- `dataset.jsonl` — 30 hand-curated coding-task descriptions, 10 per tier, each with a one-line rationale. Single-reviewer ground truth, not multi-rater validated — a first real signal, not a calibrated benchmark.
+- `llm_judge.py` — prompts a real Anthropic model to output one of trivial/moderate/hard on the same text, and measures its actual token cost.
+- `run_eval.py` — runs both, reports accuracy vs. ground truth, a confusion matrix, latency, cost, and Laya/LLM agreement. Writes `results.md`.
+
+### Latest results (Laya only — no LLM judge run yet, no API key available in this environment)
+
+**Laya accuracy: 63% (30 examples).** Mean latency 56.5ms, $0 marginal cost (local inference). Confusion matrix:
+
+| ground truth \ predicted | trivial | moderate | hard |
+| --- | --- | --- | --- |
+| **trivial** | 9 | 1 | 0 |
+| **moderate** | 4 | 6 | 0 |
+| **hard** | 0 | 6 | 4 |
+
+The errors aren't random: Laya is weakest on **hard** tasks (only 4/10 correct — the other 6 all get called "moderate", never "trivial"), and moderate tasks get pulled down toward "trivial" more than up toward "hard". So it never mistakes a hard task for a trivial one (the worst-case error for a routing system), but it under-calls difficulty on the harder end of the spectrum — 63% zero-shot accuracy is real signal, not noise, but not yet something to route production traffic on unsupervised. Matches Laya's own model-card caveat that zero-shot accuracy on specialized tasks is modest.
+
+Once an Anthropic API key is available, rerun with `--with-llm` to get the LLM-judge accuracy/cost/latency numbers and the Laya/LLM agreement rate for a real cost-vs-accuracy comparison.
+
 ## Open questions / next steps
 
-- Build a real eval set to replace the 5-example hand-picked thresholds
-- Consider whether fine-tuning (mentioned as an option on Laya's model card) is worth it before/instead of more prompt/criteria tuning
+- Run `--with-llm` once an API key is available, and compare accuracy/cost/latency against Laya's numbers above
+- Given Laya's weak spot is under-calling "hard" tasks: try fine-tuning (mentioned as an option on Laya's model card), more criteria tuning, or a bigger/more diverse dataset before trusting this for real routing
 - Decide the entry point for the next step: a LiteLLM `async_pre_call_hook` integration (reuses `pick_model` from this library) vs. a standalone proxy
 - Decide how Laya gets served once this moves beyond a single local process (still in-process/local for now)
