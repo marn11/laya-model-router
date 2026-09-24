@@ -4,7 +4,7 @@ An experiment in building a self-hosted, open-source request router that picks w
 
 ## Status
 
-Early-stage / design phase. Nothing is wired up yet. This repo exists to scope the problem before writing code.
+A working "plain library" MVP exists: `laya_model_router.ModelRouter.pick_model(text)` classifies difficulty with Laya and returns a model name. No server, no LiteLLM integration yet — see "Library usage" below and the open questions at the bottom.
 
 ## Background
 
@@ -34,9 +34,39 @@ Build a standalone model router: something that sits **in front of** LLM API cal
 
 This is deliberately a separate repo from `jev-portal-spotify`. That repo is a fork of Spotify's Portal plugin for coding agents (Claude Code / Codex / Cursor); its `shunt` plugin delegates specific sub-tasks (bulk file reads, boilerplate generation) to a fixed, pre-configured worker model via Portal's AiKA feature, gated by a static line-count threshold — there's no per-request difficulty classification, and it only ever governs a plugin's own tool calls inside an existing Claude Code session, not which model answers a request in the first place. What we're building here is unrelated to that Portal/Claude Code plugin architecture: a router that decides, before any model is called, which model gets the call — which is a different problem and doesn't belong bolted onto a Spotify fork.
 
+## Library usage
+
+```bash
+uv sync
+uv run python -m laya_model_router "find the race condition in this concurrent queue implementation"
+# {"tier": "hard", "model": "anthropic/claude-sonnet-5", "score": 1.573, "confidence": 0.272}
+```
+
+```python
+from laya_model_router import ModelRouter
+
+router = ModelRouter()
+result = router.pick_model("write a test for UserService.create following the pattern in OrderServiceTest")
+print(result.tier, result.model, result.score, result.confidence)
+```
+
+`ModelRouter(model_tiers={...})` overrides the default tier→model mapping (`DEFAULT_MODEL_TIERS` in `router.py`) if you want different backend models per tier.
+
+### What the first real test run found
+
+Laya's `score` question type is very sensitive to how the `criteria` are worded — this wasn't obvious from the docs and needed a live test to surface:
+
+| Criteria style | Result on 3 spot-check examples |
+| --- | --- |
+| Long paragraphs with embedded examples | **Backwards.** A trivial rename scored *higher* than a pattern-following test-writing task. |
+| Single words (`"trivial"`, `"moderate"`, `"hard"`) | Correct ordering, but almost no separation (scores clustered in a ~0.18 range). |
+| Short phrases, no examples (`"trivial, no reasoning needed"`, ...) | Correct ordering with usable separation across 5 examples (range ~0.9–1.6). Used in `router.py`. |
+
+With the short-phrase criteria, tier thresholds (`_TIER_THRESHOLDS` in `router.py`) were hand-picked from that 5-example range — trivial/trivial/moderate/moderate(borderline)/hard all landed where expected, but this is **not a calibrated boundary**, just an MVP starting point. Confidence values were consistently low (0.02–0.27) even when the score ordering was correct, consistent with Laya's own model-card caveat that zero-shot accuracy on specialized tasks is modest. A real eval set (labeled examples, ideally with disagreement resolved by more than one person's judgment) would be needed before trusting this for anything beyond experimentation.
+
 ## Open questions / next steps
 
-- Define the difficulty taxonomy (how many tiers, what distinguishes them)
-- Decide the entry point: a proxy/gateway in front of existing model APIs, a library, or an integration with something like LiteLLM
-- Decide how Laya gets served (local inference vs. a small hosted endpoint)
-- Zero-shot vs. fine-tuned: start with zero-shot criteria and see how far that gets us before investing in labeled training data
+- Build a real eval set to replace the 5-example hand-picked thresholds
+- Consider whether fine-tuning (mentioned as an option on Laya's model card) is worth it before/instead of more prompt/criteria tuning
+- Decide the entry point for the next step: a LiteLLM `async_pre_call_hook` integration (reuses `pick_model` from this library) vs. a standalone proxy
+- Decide how Laya gets served once this moves beyond a single local process (still in-process/local for now)

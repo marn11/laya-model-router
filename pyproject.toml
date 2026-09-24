@@ -1,0 +1,15 @@
+[project]
+name = "laya-model-router"
+version = "0.1.0"
+description = "Laya-based difficulty classifier for picking which LLM handles a request"
+authors = [
+    { name = "marn11", email = "benchmarin5@gmail.com" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "laya>=0.3.20",
+]
+
+[build-system]
+requires = ["uv_build>=0.11.14,<0.12.0"]
+build-backend = "uv_build"
