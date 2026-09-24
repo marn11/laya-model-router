@@ -10,10 +10,10 @@ Laya confusion matrix:
 | **moderate** | 4 | 6 | 0 |
 | **hard** | 0 | 6 | 4 |
 
-Laya mean latency: 52.9 ms
+Laya mean latency: 51.8 ms
 Laya cost: $0 marginal (self-hosted, local inference)
 
-LLM judge (claude-sonnet-5) accuracy: **100%** (30 examples)
+LLM judge (gpt-5.6-terra) accuracy: **100%** (30 examples)
 
 LLM confusion matrix:
 
