@@ -1,0 +1,57 @@
+{"text": "Change the Kubernetes job so it is retried on transient failures but not on invalid configuration.", "tier": "moderate"}
+{"text": "Design an audit-log retention process that meets deletion requirements while preserving tamper-evident records.", "tier": "hard"}
+{"text": "Create a response plan for ransomware affecting a cloud account, covering isolation, evidence preservation, and recovery sequencing.", "tier": "hard"}
+{"text": "Add a label for the new settings row in the iOS localization file.", "tier": "trivial"}
+{"text": "Add structured logging around each extract, transform, and load phase of this job.", "tier": "moderate"}
+{"text": "Make this enum use the project's fixed underlying integer type.", "tier": "trivial"}
+{"text": "Implement a pause-menu focus order that works with both touch and gamepad navigation.", "tier": "moderate"}
+{"text": "Initialize the frame counter to zero when the renderer is constructed.", "tier": "trivial"}
+{"text": "Add a data contract check that verifies monetary columns are nonnegative after currency conversion.", "tier": "moderate"}
+{"text": "Analyze why frame pacing degrades on 120 Hz Android displays and adapt the presentation scheduling logic.", "tier": "hard"}
+{"text": "Add the new source topic name to the Kafka consumer configuration.", "tier": "trivial"}
+{"text": "Update this Android layout constraint so the button sits below the title.", "tier": "trivial"}
+{"text": "Add a release gate that requires a successful database migration dry run before production deployment.", "tier": "moderate"}
+{"text": "Expose port 8080 in the container image definition.", "tier": "trivial"}
+{"text": "Redesign the firmware boot-selection logic so interrupted updates cannot boot an unverified image.", "tier": "hard"}
+{"text": "Add a cloud storage lifecycle rule that deletes temporary uploads after 30 days.", "tier": "trivial"}
+{"text": "Add a compound uniqueness test for source_system and external_transaction_id.", "tier": "moderate"}
+{"text": "Modify the session middleware to renew expiry only when the session is close to expiring.", "tier": "moderate"}
+{"text": "Add a resource limit of 512Mi memory to the batch job.", "tier": "trivial"}
+{"text": "Design a GraphQL persisted-query rollout that protects against arbitrary query abuse while allowing gradual client adoption.", "tier": "hard"}
+{"text": "Register the new iOS storyboard identifier in the view-controller factory.", "tier": "trivial"}
+{"text": "Update the API error mapper so database uniqueness violations become field-specific conflict responses.", "tier": "moderate"}
+{"text": "Make the notebook's train-test split stratify on the existing fraud label when possible.", "tier": "moderate"}
+{"text": "Introduce a secret-manager reference for the database password instead of passing it through CI variables.", "tier": "moderate"}
+{"text": "Find the hidden many-to-many relationship in this semantic model that causes measures to change with dashboard filter order.", "tier": "hard"}
+{"text": "Add a CI matrix that tests each supported runtime version without duplicating deployment jobs.", "tier": "moderate"}
+{"text": "Investigate why the merge job intermittently produces duplicate surrogate keys under parallel execution.", "tier": "hard"}
+{"text": "Add a simple count of failed records to the pipeline summary.", "tier": "trivial"}
+{"text": "Add the missing closing parenthesis to this SQL window function.", "tier": "trivial"}
+{"text": "Reconcile concurrent edits to a kanban board so ordering updates do not silently overwrite one another.", "tier": "hard"}
+{"text": "Include row_count in the ETL completion log message.", "tier": "trivial"}
+{"text": "Add a database index for the orders.created_at column.", "tier": "trivial"}
+{"text": "Add a setter for the already-stored vibration-enabled flag.", "tier": "trivial"}
+{"text": "Fix the temporal aggregation so sessions crossing midnight are allocated consistently without breaking historical comparisons.", "tier": "hard"}
+{"text": "Add support for parsing an optional calibration section in the device protocol packet.", "tier": "moderate"}
+{"text": "Implement state restoration for the selected tab in this iOS settings screen.", "tier": "moderate"}
+{"text": "Trace why a user can occasionally see another tenant's cached dashboard data and implement a safe correction.", "tier": "hard"}
+{"text": "Display the current user's avatar in the navigation bar.", "tier": "trivial"}
+{"text": "Implement an Android offline-sync conflict policy that preserves user edits and converges predictably across devices.", "tier": "hard"}
+{"text": "Design a schema and query strategy for versioned documents with efficient diff history and rollback support.", "tier": "hard"}
+{"text": "Evaluate the current password-reset flow for account enumeration and token replay risks, then harden it.", "tier": "hard"}
+{"text": "Enable compiler warnings for this C++ target using the project's standard flag set.", "tier": "trivial"}
+{"text": "Set the Android activity orientation to landscape in the manifest.", "tier": "trivial"}
+{"text": "Update the audio mixer to fade out a removed source instead of cutting it abruptly.", "tier": "moderate"}
+{"text": "Set up log-based alerting for repeated authentication failures while suppressing known health-check traffic.", "tier": "moderate"}
+{"text": "Convert the feature manifest loader to cache parsed metadata for the lifetime of a batch run.", "tier": "moderate"}
+{"text": "Investigate why pods are evicted during traffic spikes despite low average CPU utilization and propose a durable fix.", "tier": "hard"}
+{"text": "Correct the touch-input prediction algorithm so fast swipes remain responsive without overshooting UI controls.", "tier": "hard"}
+{"text": "Set the CI job timeout to 20 minutes.", "tier": "trivial"}
+{"text": "Add a migration that backfills the new normalized country_code field from existing addresses.", "tier": "moderate"}
+{"text": "Set this Android notification channel importance to low.", "tier": "trivial"}
+{"text": "Implement sortable table headers while preserving the selected sort in the URL.", "tier": "moderate"}
+{"text": "Rebuild the retention metric definition so it handles reactivations, account merges, and delayed identity resolution consistently.", "tier": "hard"}
+{"text": "Implement model-monitoring alerts that combine performance decay, data drift, and delayed-label availability without excessive noise.", "tier": "hard"}
+{"text": "Correct the cache invalidation sequence for product pricing so scheduled changes become visible at exactly the intended time.", "tier": "hard"}
+{"text": "Evaluate the security implications of exposing debug endpoints through a private load balancer and implement appropriate controls.", "tier": "hard"}
+{"text": "Make this SPI driver reject transfers that exceed the controller's DMA limit.", "tier": "moderate"}

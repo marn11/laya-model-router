@@ -1,0 +1,423 @@
+{"text": "Harden the game networking serializer against malicious packet lengths and deeply nested payloads without adding avoidable latency.", "tier": "hard"}
+{"text": "Add a cloud backup policy for the managed database that meets the stated retention requirement.", "tier": "moderate"}
+{"text": "Add a CORS allowlist entry for the local frontend origin.", "tier": "trivial"}
+{"text": "Design tests that prove the SCD Type 2 loader closes and opens records correctly for backdated corrections.", "tier": "hard"}
+{"text": "Create a GET route that returns the application's health status as JSON.", "tier": "trivial"}
+{"text": "Modify the Android media session so headset play and pause events control the active player.", "tier": "moderate"}
+{"text": "Determine why GPU memory climbs after repeated scene transitions even though textures appear to be released.", "tier": "hard"}
+{"text": "Implement Android predictive-back behavior for this nested settings flow.", "tier": "moderate"}
+{"text": "Return HTTP 204 after a successful deletion in this controller.", "tier": "trivial"}
+{"text": "Add an SBOM generation step to releases and publish it with the corresponding container image.", "tier": "moderate"}
+{"text": "Determine the root cause of duplicate background-job execution across a regional failover and make processing idempotent.", "tier": "hard"}
+{"text": "Implement keyboard avoidance for this Android Compose chat composer.", "tier": "moderate"}
+{"text": "Build a privacy-preserving user-export endpoint that gathers data across services without exposing internal identifiers.", "tier": "hard"}
+{"text": "Register the new keyboard shortcut in the editor input map.", "tier": "trivial"}
+{"text": "Reduce this pathfinding system's worst-case frame spikes without changing its route-selection semantics.", "tier": "hard"}
+{"text": "Set the training script's default number of epochs to five.", "tier": "trivial"}
+{"text": "Mark this Objective-C method as unavailable using the project's existing macro.", "tier": "trivial"}
+{"text": "Build a safe account-merging workflow that resolves conflicting identities, subscriptions, and audit records.", "tier": "hard"}
+{"text": "Investigate why online predictions disagree with batch scoring for a small subset of entities and fix the shared feature logic.", "tier": "hard"}
+{"text": "Create a database seed record for the default administrator role.", "tier": "trivial"}
+{"text": "Add checksum validation before accepting a firmware configuration block from flash.", "tier": "moderate"}
+{"text": "Ensure the iOS background refresh task exits promptly when its expiration handler runs.", "tier": "moderate"}
+{"text": "Update the CI cache key so dependency changes invalidate it without losing reuse across unrelated source edits.", "tier": "moderate"}
+{"text": "Disable the submit button when the checkout form is invalid.", "tier": "trivial"}
+{"text": "Modify the Terraform module so private subnets receive outbound access through the existing NAT gateway.", "tier": "moderate"}
+{"text": "Implement deterministic replay checkpoints that allow seeking without re-simulating an entire long match.", "tier": "hard"}
+{"text": "Debug a network policy rollout that prevents only some pods from resolving DNS and explain the selector interaction.", "tier": "hard"}
+{"text": "Find and fix the dead-letter buildup in the email pipeline without losing messages or sending them twice.", "tier": "hard"}
+{"text": "Make this percentile calculation ignore null measurements while retaining groups with no valid values.", "tier": "moderate"}
+{"text": "Render a character counter below the message composer textarea.", "tier": "trivial"}
+{"text": "Diagnose the intermittent DMA corruption seen only when this embedded board runs at its highest clock frequency.", "tier": "hard"}
+{"text": "Review the cloud IAM policies for privilege-escalation paths created through role passing and service impersonation.", "tier": "hard"}
+{"text": "Update the Bluetooth scanner to merge repeated advertisements from the same peripheral.", "tier": "moderate"}
+{"text": "Plan a multi-region failover strategy that meets the recovery objectives while accounting for data consistency.", "tier": "hard"}
+{"text": "Plan and implement a zero-downtime rollout for replacing integer primary keys with UUIDs in public APIs.", "tier": "hard"}
+{"text": "Design a safe hot-reload path for game shaders that keeps existing materials usable when compilation fails.", "tier": "hard"}
+{"text": "Add drift detection that compares live feature distributions to the correct training reference while accounting for sparse categories.", "tier": "hard"}
+{"text": "Add a container image tag based on the commit SHA.", "tier": "trivial"}
+{"text": "Update the user profile form so an unchanged email address does not trigger a duplicate-email error.", "tier": "moderate"}
+{"text": "Add a column comment for customer_key in the dimension-table DDL.", "tier": "trivial"}
+{"text": "Add partition pruning to this BigQuery query without changing the reported totals.", "tier": "moderate"}
+{"text": "Modify the infrastructure plan so ephemeral review environments are automatically cleaned up after merged pull requests.", "tier": "moderate"}
+{"text": "Create a reusable badge component for displaying order status.", "tier": "trivial"}
+{"text": "Add a unique constraint to the workspace slug column.", "tier": "trivial"}
+{"text": "Add a boolean isArchived property to the project entity.", "tier": "trivial"}
+{"text": "Find and resolve the integer-overflow path in this C image decoder before it reaches allocation sizing.", "tier": "hard"}
+{"text": "Rework the attribution SQL so conversion credit is assigned correctly across overlapping campaign windows.", "tier": "hard"}
+{"text": "Trace the root cause of a discrepancy between dashboard totals and finance-approved ledger totals, then propose the corrective transformation.", "tier": "hard"}
+{"text": "Implement idempotency for the daily file loader when the same source object is delivered twice.", "tier": "moderate"}
+{"text": "Configure registry retention rules that preserve release images while pruning unreferenced branch builds.", "tier": "moderate"}
+{"text": "Configure the load balancer health check to match the application's authenticated-free status route.", "tier": "moderate"}
+{"text": "Make multiplayer rollback tolerate late input packets while preserving deterministic simulation results.", "tier": "hard"}
+{"text": "Add gamepad remapping persistence while preserving defaults for newly introduced actions.", "tier": "moderate"}
+{"text": "Analyze the notebook's cross-validation code for group leakage and revise it to respect account-level boundaries.", "tier": "hard"}
+{"text": "Change the daily DAG so downstream publishing runs only when all source extracts succeed.", "tier": "moderate"}
+{"text": "Change the Airflow task owner metadata to data-platform.", "tier": "trivial"}
+{"text": "Fix the rare desynchronization between the physics engine and animation state during networked character knockback.", "tier": "hard"}
+{"text": "Update this UART parser to recover cleanly after an invalid length byte.", "tier": "moderate"}
+{"text": "Render a 404 page when a requested blog post cannot be found.", "tier": "trivial"}
+{"text": "Add a pipeline stage that runs the infrastructure formatter.", "tier": "trivial"}
+{"text": "Fix the Bluetooth LE connection manager so reconnect storms cannot exhaust device resources or strand callbacks.", "tier": "hard"}
+{"text": "Configure the CI pipeline to retain artifacts for seven days.", "tier": "trivial"}
+{"text": "Design an audit trail for production configuration changes that remains trustworthy even if a deployment credential is compromised.", "tier": "hard"}
+{"text": "Make the CSV ingest detect and quarantine rows with an unexpected number of fields.", "tier": "moderate"}
+{"text": "Design a durable job scheduling system that handles recurring jobs, missed executions, and clock skew across workers.", "tier": "hard"}
+{"text": "Add an updated_at column with the framework's automatic timestamp behavior.", "tier": "trivial"}
+{"text": "Include the new controller icon in the game's input glyph atlas.", "tier": "trivial"}
+{"text": "Add support for filtering projects by multiple labels using AND semantics.", "tier": "moderate"}
+{"text": "Implement tenant-aware database connection handling that prevents cross-tenant transactions in pooled workers.", "tier": "hard"}
+{"text": "Add a metric for records dropped by each validation rule and expose it to the job dashboard.", "tier": "moderate"}
+{"text": "Update the training pipeline to persist the fitted feature encoder alongside the model.", "tier": "moderate"}
+{"text": "Add locale-aware formatting for currency values in the billing summary component.", "tier": "moderate"}
+{"text": "Create a migration that adds a nullable last_seen_at timestamp to users.", "tier": "trivial"}
+{"text": "Declare the existing interrupt handler prototype in the public driver header.", "tier": "trivial"}
+{"text": "Add a workflow trigger for pull requests targeting the main branch.", "tier": "trivial"}
+{"text": "Add the supplied USB vendor ID to the driver's supported-device table.", "tier": "trivial"}
+{"text": "Configure an alert for rising HTTP 5xx rates with a threshold appropriate to the service's normal traffic.", "tier": "moderate"}
+{"text": "Trace the source of training-serving skew between the offline feature query and online feature lookup.", "tier": "hard"}
+{"text": "Create a migration strategy for splitting a polymorphic activity table into typed tables while keeping historical URLs working.", "tier": "hard"}
+{"text": "Add rate limiting to the login endpoint using the existing Redis-backed limiter.", "tier": "moderate"}
+{"text": "Add an LRU policy to the icon cache while keeping pinned UI assets resident.", "tier": "moderate"}
+{"text": "Move sensitive application settings from the ConfigMap into the existing encrypted-secret workflow.", "tier": "moderate"}
+{"text": "Include the new source file in the existing CMake target.", "tier": "trivial"}
+{"text": "Replace the deprecated CSV delimiter argument with sep in this pandas call.", "tier": "trivial"}
+{"text": "Implement optimistic UI removal for saved items and restore the item if the API call fails.", "tier": "moderate"}
+{"text": "Investigate a recurring certificate-renewal outage involving multiple ingress controllers competing for the same challenge.", "tier": "hard"}
+{"text": "Set the notebook's random seed to 42 before splitting the dataset.", "tier": "trivial"}
+{"text": "Implement ownership transfer for this C++ buffer wrapper without exposing a double-free path.", "tier": "moderate"}
+{"text": "Add a placeholder option to the country select control.", "tier": "trivial"}
+{"text": "Configure an artifact promotion workflow that reuses the tested staging image for production.", "tier": "moderate"}
+{"text": "Analyze the blast radius of a compromised CI token and redesign trust boundaries for source, build, and deploy stages.", "tier": "hard"}
+{"text": "Add support for partial updates to customer addresses while preventing accidental nulling of omitted fields.", "tier": "moderate"}
+{"text": "Add a Kubernetes namespace manifest for the staging environment.", "tier": "trivial"}
+{"text": "Fix the iOS crash caused by a scene disconnect racing with an in-flight Metal command-buffer completion.", "tier": "hard"}
+{"text": "Implement an exactly-once-safe sink strategy for this Kafka consumer despite transient warehouse failures.", "tier": "hard"}
+{"text": "Add the existing cleanup function to this module's shutdown sequence.", "tier": "trivial"}
+{"text": "Plan and implement a zero-data-loss transition from hourly batch scoring to near-real-time scoring with comparable auditability.", "tier": "hard"}
+{"text": "Implement a configurable sampling rate for verbose request logging in the prediction service.", "tier": "moderate"}
+{"text": "Fix the timezone bug where recurring appointments shift by an hour after daylight-saving transitions.", "tier": "hard"}
+{"text": "Redesign the model-training orchestration so failed runs can resume safely from durable intermediate artifacts.", "tier": "hard"}
+{"text": "Update the Kubernetes RBAC bindings so the maintenance job can manage only resources in its own namespace.", "tier": "moderate"}
+{"text": "Make this Swift concurrency bridge deliver UI updates on the main actor.", "tier": "moderate"}
+{"text": "Set the Spark application's name to customer-lifetime-value-refresh.", "tier": "trivial"}
+{"text": "Implement a freshness check that warns when the upstream snapshot is more than six hours old.", "tier": "moderate"}
+{"text": "Rework Android video playback surface ownership so rotation, picture-in-picture, and app backgrounding do not leak decoders.", "tier": "hard"}
+{"text": "Add a health-check endpoint to the service container.", "tier": "trivial"}
+{"text": "Build reconciliation logic that explains row-level differences between the legacy and replacement revenue pipelines.", "tier": "hard"}
+{"text": "Add the provided application identifier to the iOS test target settings.", "tier": "trivial"}
+{"text": "Create a Dockerfile for the worker using the repository's supported runtime.", "tier": "trivial"}
+{"text": "Identify why the ORM transaction occasionally commits despite a downstream validation failure and correct the boundary.", "tier": "hard"}
+{"text": "Configure a notification channel for failed production deployments.", "tier": "trivial"}
+{"text": "Add a transaction around account creation so the user and its default workspace are created together.", "tier": "moderate"}
+{"text": "Diagnose why retraining quality degrades after the feature-store rollout even though offline metrics remain stable.", "tier": "hard"}
+{"text": "Use the project's standard debug tag for this Android log statement.", "tier": "trivial"}
+{"text": "Migrate the session store from signed cookies to Redis without logging users out during deployment.", "tier": "hard"}
+{"text": "Determine why browser back navigation restores stale form state after an autosave conflict and resolve the interaction.", "tier": "hard"}
+{"text": "Find why this Android camera preview becomes rotated after returning from split-screen mode and correct it across API levels.", "tier": "hard"}
+{"text": "Determine why the monitoring system misses short-lived jobs and implement a strategy that captures their failures reliably.", "tier": "hard"}
+{"text": "Create a placeholder SQL model for the new dim_region table.", "tier": "trivial"}
+{"text": "Add an allow rule for HTTPS traffic to the ingress configuration.", "tier": "trivial"}
+{"text": "Make the sidebar collapse when the mobile menu close icon is clicked.", "tier": "trivial"}
+{"text": "Design an authorization model for nested organizations, teams, and projects with explicit inheritance boundaries.", "tier": "hard"}
+{"text": "Redesign the feature backfill workflow so it can reproduce historical values using only data available at each cutoff.", "tier": "hard"}
+{"text": "Hide the beta navigation item unless the feature flag is enabled.", "tier": "trivial"}
+{"text": "Keep the iOS login sheet visible when token refresh fails but the account is still recoverable.", "tier": "moderate"}
+{"text": "Prevent duplicate form submissions by sharing the request state across the modal and page-level button.", "tier": "moderate"}
+{"text": "Update the model artifact path to use the production bucket prefix.", "tier": "trivial"}
+{"text": "Pin the base image to the current approved patch version.", "tier": "trivial"}
+{"text": "Add validation that rejects incoming events whose payload lacks the required event_type field.", "tier": "moderate"}
+{"text": "Add a validation query that detects orphaned fact rows after the dimension load completes.", "tier": "moderate"}
+{"text": "Update the incident template to capture impact, timeline, mitigation, and follow-up ownership.", "tier": "moderate"}
+{"text": "Configure a canary deployment step that sends a small percentage of traffic to the new API revision.", "tier": "moderate"}
+{"text": "Create a phased plan to enforce container security policies without breaking workloads that rely on root filesystem writes.", "tier": "hard"}
+{"text": "Design a schema-evolution policy for nested event payloads that preserves backward compatibility and detects breaking producer changes.", "tier": "hard"}
+{"text": "Add a background cleanup job for expired upload records while retaining files referenced by completed imports.", "tier": "moderate"}
+{"text": "Update the S3 input prefix for the January backfill.", "tier": "trivial"}
+{"text": "Make Android app-link verification failures open the web fallback rather than a blank screen.", "tier": "moderate"}
+{"text": "Redesign the bulk-delete endpoint to provide asynchronous progress, cancellation, and an accurate final audit trail.", "tier": "hard"}
+{"text": "Add a monitoring check that distinguishes an unreachable dependency from an application-level dependency failure.", "tier": "moderate"}
+{"text": "Create a service account for the metrics collector.", "tier": "trivial"}
+{"text": "Add the new enemy prefab to the game's addressable asset group.", "tier": "trivial"}
+{"text": "Update the feature-store entity description to say it uses account_id.", "tier": "trivial"}
+{"text": "Create an environment-specific values file for the QA Helm release.", "tier": "trivial"}
+{"text": "Optimize this mobile particle system to meet the frame budget on mid-range devices without visibly changing the effect.", "tier": "hard"}
+{"text": "Review the API gateway configuration for request-smuggling risks across the proxy and upstream protocol boundary.", "tier": "hard"}
+{"text": "Set the default camera zoom level to the requested value.", "tier": "trivial"}
+{"text": "Implement soft deletion for API tokens and exclude revoked tokens from normal queries.", "tier": "moderate"}
+{"text": "Configure the image scanner to fail on critical findings.", "tier": "trivial"}
+{"text": "Create a safe key-rotation design for an encryption service whose clients may continue using old keys during rollout.", "tier": "hard"}
+{"text": "Add a dead-letter output for records that fail warehouse type coercion.", "tier": "moderate"}
+{"text": "Add a boolean flag that enables sample-data loading in local runs.", "tier": "trivial"}
+{"text": "Add a security header policy at the edge that permits the application's existing third-party integrations.", "tier": "moderate"}
+{"text": "Create a constant for the fixed joystick dead-zone value used by this input class.", "tier": "trivial"}
+{"text": "Update this SQL filter so it excludes records marked as deleted.", "tier": "trivial"}
+{"text": "Make this data-quality assertion check that order_id is not null.", "tier": "trivial"}
+{"text": "Add an alert when the number of records written differs materially from the number extracted.", "tier": "moderate"}
+{"text": "Find the cause of inconsistent currency totals caused by mixed exchange-rate effective dates across pipeline stages.", "tier": "hard"}
+{"text": "Update the deployment workflow so preview environments use a unique namespace per pull request.", "tier": "moderate"}
+{"text": "Include the request ID in the structured response headers.", "tier": "trivial"}
+{"text": "Investigate why a service passes readiness checks while returning elevated latency to customers under partial dependency failure.", "tier": "hard"}
+{"text": "Make the game's save format forward-compatible while retaining corruption detection and fast partial loading.", "tier": "hard"}
+{"text": "Configure the service mesh timeout and retry policy to avoid retrying non-idempotent requests.", "tier": "moderate"}
+{"text": "Support idempotency keys on the subscription creation endpoint and return the original result on replay.", "tier": "moderate"}
+{"text": "Investigate why iOS background audio resumes twice after an interrupted phone call and prevent duplicate playback sessions.", "tier": "hard"}
+{"text": "Change the cache key for dashboard metrics so it is isolated by organization and reporting timezone.", "tier": "moderate"}
+{"text": "Add a brief README line explaining how to start the local Kafka consumer.", "tier": "trivial"}
+{"text": "Configure the deployment controller to pause when error-rate alerts fire during a rollout.", "tier": "moderate"}
+{"text": "Debug the streaming watermark configuration that is dropping valid late data while allowing unbounded state growth.", "tier": "hard"}
+{"text": "Design observability for asynchronous workflows so a single user request can be traced across queues, workers, and callbacks.", "tier": "hard"}
+{"text": "Add conditional GET support to the public catalog endpoint using ETags.", "tier": "moderate"}
+{"text": "Investigate why long-lived SSE connections gradually exhaust file descriptors and implement proper lifecycle cleanup.", "tier": "hard"}
+{"text": "Create a CI approval rule that requires an infrastructure owner only when files under the cloud modules change.", "tier": "moderate"}
+{"text": "Add a loading spinner to the profile save button while the request is pending.", "tier": "trivial"}
+{"text": "Set the Docker build context to the application directory.", "tier": "trivial"}
+{"text": "Debug the intermittent duplicate websocket notifications caused by reconnects and overlapping subscriptions.", "tier": "hard"}
+{"text": "Create a CSS utility class for visually hidden screen-reader text.", "tier": "trivial"}
+{"text": "Redesign the render-command submission path to reduce lock contention without breaking frame ordering.", "tier": "hard"}
+{"text": "Determine why a query's result changes when the warehouse optimizer changes join order and make its semantics explicit.", "tier": "hard"}
+{"text": "Return the newly created comment in the POST response body.", "tier": "trivial"}
+{"text": "Wire the existing Pause button to call the game's pause method.", "tier": "trivial"}
+{"text": "Update the iOS deep-link handler to route notification links to the correct tab.", "tier": "moderate"}
+{"text": "Update the audit-log serializer to redact secrets nested inside request metadata.", "tier": "moderate"}
+{"text": "Design a zero-downtime migration from a shared ingress controller to isolated controllers for public and internal traffic.", "tier": "hard"}
+{"text": "Add gzip compression to the parquet export configuration.", "tier": "trivial"}
+{"text": "Trace an intermittent CI deployment failure caused by concurrent releases modifying the same infrastructure state.", "tier": "hard"}
+{"text": "Investigate why the feature materialization task uses far more memory after a skewed customer import and mitigate the skew.", "tier": "hard"}
+{"text": "Set the initial opacity of this HUD panel to fully visible.", "tier": "trivial"}
+{"text": "Add a smoke test that loads a small parquet fixture and runs the complete transformation graph.", "tier": "moderate"}
+{"text": "Add a response content-type header for CSV exports.", "tier": "trivial"}
+{"text": "Build a migration plan for replacing self-managed CI runners without interrupting queued deployments or losing auditability.", "tier": "hard"}
+{"text": "Replace this deprecated Android color API with its direct compatibility equivalent.", "tier": "trivial"}
+{"text": "Make the Docker build reproducible by locking the package installation and avoiding mutable image tags.", "tier": "moderate"}
+{"text": "Design a privacy-preserving deletion workflow that removes a user's data from raw, curated, feature, and model-training stores.", "tier": "hard"}
+{"text": "Add a label identifying the owning team to every Kubernetes Deployment.", "tier": "trivial"}
+{"text": "Rework this lock-free free list so it is safe against ABA issues on the supported architectures.", "tier": "hard"}
+{"text": "Update the model-evaluation notebook to compare the current run against the registered baseline.", "tier": "moderate"}
+{"text": "Add a menu item that invokes the existing Save Replay command.", "tier": "trivial"}
+{"text": "Add a maximum length attribute to the product title input.", "tier": "trivial"}
+{"text": "Handle Android runtime denial of nearby-device permission with an appropriate in-app explanation.", "tier": "moderate"}
+{"text": "Plan a safe migration from a single wide events table to partitioned fact and dimension tables while preserving dashboards.", "tier": "hard"}
+{"text": "Update the merge statement to apply soft deletes from the incoming customer snapshot.", "tier": "moderate"}
+{"text": "Modify the aggregation query to retain days with zero purchases in the final report.", "tier": "moderate"}
+{"text": "Adjust this C++ ring buffer so it supports non-copyable message types.", "tier": "moderate"}
+{"text": "Fix the race between payment confirmation webhooks and browser redirects so order state progresses exactly once.", "tier": "hard"}
+{"text": "Diagnose a hard-to-reproduce stack overflow in the embedded protocol decoder triggered by malformed nested packets.", "tier": "hard"}
+{"text": "Make this real-time audio resampler handle clock drift without clicks, runaway latency, or buffer underflow.", "tier": "hard"}
+{"text": "Connect the existing volume slider outlet in this UIKit view controller.", "tier": "trivial"}
+{"text": "Create a network policy allowing the frontend to reach the API service.", "tier": "trivial"}
+{"text": "Optimize skeletal animation blending for crowds while preserving root-motion accuracy for nearby characters.", "tier": "hard"}
+{"text": "Investigate and fix why a late-arriving event can overwrite a newer customer state in the merge pipeline.", "tier": "hard"}
+{"text": "Develop a post-incident remediation plan for a production outage where an automated rollback made the data inconsistency worse.", "tier": "hard"}
+{"text": "Include the missing timezone import in the timestamp normalization utility.", "tier": "trivial"}
+{"text": "Design a rate-limiting strategy that protects shared infrastructure while preventing one noisy tenant from starving others.", "tier": "hard"}
+{"text": "Refine the churn-feature query so future events cannot leak into each customer's observation window.", "tier": "moderate"}
+{"text": "Add the required Bluetooth permission declaration to the Android manifest.", "tier": "trivial"}
+{"text": "Add a deployment annotation recording the source revision.", "tier": "trivial"}
+{"text": "Design a resource-lifetime model for Vulkan descriptors that avoids stalls while frames remain in flight.", "tier": "hard"}
+{"text": "Include a createdAt field in the GraphQL Task type.", "tier": "trivial"}
+{"text": "Tune the node-drain settings so routine maintenance respects the application's disruption budget.", "tier": "moderate"}
+{"text": "Add a readiness probe that checks the application status path.", "tier": "trivial"}
+{"text": "Return the cached texture handle from this simple accessor.", "tier": "trivial"}
+{"text": "Make texture streaming fall back to a lower mip level when storage pressure is detected.", "tier": "moderate"}
+{"text": "Implement reliable outbox processing for order events so database writes and message publication cannot diverge.", "tier": "hard"}
+{"text": "Add a default value for the batch-size option in the ETL job configuration.", "tier": "trivial"}
+{"text": "Make the authorization cache invalidate when a user's organization membership changes.", "tier": "moderate"}
+{"text": "Expose the already-implemented battery percentage through the device status struct.", "tier": "trivial"}
+{"text": "Create a .dockerignore file that excludes build artifacts and local dependencies.", "tier": "trivial"}
+{"text": "Add a scheduled workflow that runs the dependency scanner every Monday.", "tier": "trivial"}
+{"text": "Change the checkout total calculation to apply discounts before sales tax.", "tier": "moderate"}
+{"text": "Implement request cancellation for typeahead searches so stale responses cannot overwrite newer results.", "tier": "moderate"}
+{"text": "Design an incident-response procedure for a suspected leaked production credential, including containment and safe rotation.", "tier": "hard"}
+{"text": "Diagnose why a React server-rendered page hydrates differently for some locales and eliminate the mismatch.", "tier": "hard"}
+{"text": "Make the search results query ignore surrounding whitespace without altering quoted search terms.", "tier": "moderate"}
+{"text": "Implement schema evolution handling for one newly optional field in the JSON event stream.", "tier": "moderate"}
+{"text": "Make the webhook secret configurable from the application settings.", "tier": "trivial"}
+{"text": "Diagnose why image builds occasionally publish an artifact built from the wrong source revision.", "tier": "hard"}
+{"text": "Expose this C++ constructor in the class's public section.", "tier": "trivial"}
+{"text": "Set the Delta table write mode to append.", "tier": "trivial"}
+{"text": "Add a default sort direction of descending to the activity feed.", "tier": "trivial"}
+{"text": "Debug the production-only CSRF failures affecting embedded clients behind a reverse proxy.", "tier": "hard"}
+{"text": "Create a constant for the default model version string.", "tier": "trivial"}
+{"text": "Diagnose a slow infrastructure plan caused by provider API throttling and redesign it to remain correct under retries.", "tier": "hard"}
+{"text": "Add a pre-deploy check that prevents publishing an image when its version already exists in the registry.", "tier": "moderate"}
+{"text": "Create an index on the raw_events table's ingestion_date column.", "tier": "trivial"}
+{"text": "Design an immutable infrastructure release process that supports emergency rollback when configuration and code change together.", "tier": "hard"}
+{"text": "Route application error logs to the centralized logging sink while excluding noisy access logs.", "tier": "moderate"}
+{"text": "Enable gzip compression in the reverse-proxy configuration.", "tier": "trivial"}
+{"text": "Update the container startup script to wait for required dependencies without masking a real startup failure.", "tier": "moderate"}
+{"text": "Fix the race between iOS push-notification delivery and account switching so notifications never open the wrong user's data.", "tier": "hard"}
+{"text": "Change this warehouse query to select event_timestamp instead of created_at.", "tier": "trivial"}
+{"text": "Change the asset loader so cancelled requests do not report a user-visible failure.", "tier": "moderate"}
+{"text": "Make the image URL transformer preserve query parameters used by the CDN.", "tier": "moderate"}
+{"text": "Determine the source of inconsistent authorization decisions when role changes propagate through multiple caches.", "tier": "hard"}
+{"text": "Update the webhook handler to verify timestamps before processing signed payloads.", "tier": "moderate"}
+{"text": "Add an aria-label to the icon-only search button.", "tier": "trivial"}
+{"text": "Investigate and fix the occasional use-after-free when the audio thread releases decoded sample buffers.", "tier": "hard"}
+{"text": "Add a frame-time graph to the debug overlay without allocating during rendering.", "tier": "moderate"}
+{"text": "Ensure the physics broadphase removes proxies when pooled entities are deactivated.", "tier": "moderate"}
+{"text": "Make the renderer recreate only invalid swapchain resources after an Android surface resize.", "tier": "moderate"}
+{"text": "Determine why the incremental warehouse model double-counts updates around daylight-saving time transitions.", "tier": "hard"}
+{"text": "Create a rollback script that redeploys the previous Helm revision.", "tier": "trivial"}
+{"text": "Correct the experiment-analysis pipeline so repeated exposures, missing assignments, and sample-ratio mismatch are handled explicitly.", "tier": "hard"}
+{"text": "Point this iOS asset catalog reference at the existing splash image.", "tier": "trivial"}
+{"text": "Create a requirements file entry for the pandas dependency used by this notebook.", "tier": "trivial"}
+{"text": "Add a newline-delimited JSON output option to the export command.", "tier": "trivial"}
+{"text": "Replace the hard-coded development schema with the test schema name in this query.", "tier": "trivial"}
+{"text": "Add a single-line comment documenting this hardware register bit mask.", "tier": "trivial"}
+{"text": "Add the missing target column to the feature-selection list.", "tier": "trivial"}
+{"text": "Add the missing include guard to this C header.", "tier": "trivial"}
+{"text": "Show the API version in the footer of the admin dashboard.", "tier": "trivial"}
+{"text": "Add a CI step that uploads test reports as build artifacts.", "tier": "trivial"}
+{"text": "Set CPU requests for the API deployment to 250 millicores.", "tier": "trivial"}
+{"text": "Update the deployment manifest to spread replicas across availability zones when the cluster supports it.", "tier": "moderate"}
+{"text": "Fix the iOS universal-link race where cold-launch routing competes with authentication restoration.", "tier": "hard"}
+{"text": "Change the API scoring handler to return a useful client error when feature parsing fails.", "tier": "moderate"}
+{"text": "Implement a debounce for rapid orientation changes before recreating this camera pipeline.", "tier": "moderate"}
+{"text": "Make the pipeline capture the source file checksum in its audit table.", "tier": "moderate"}
+{"text": "Add server-side ownership checks before allowing a member to edit a workspace document.", "tier": "moderate"}
+{"text": "Fix the transactional email preference logic so unsubscribes take precedence even when delayed events arrive out of order.", "tier": "hard"}
+{"text": "Update the permission checker to inherit team permissions only when the team belongs to the active organization.", "tier": "moderate"}
+{"text": "Optimize the hierarchical category query for large trees while preserving custom sibling ordering and access restrictions.", "tier": "hard"}
+{"text": "Change this Unity inspector field from private to serialized private.", "tier": "trivial"}
+{"text": "Determine why the navigation mesh occasionally produces unreachable goals after dynamically removing obstacles.", "tier": "hard"}
+{"text": "Rework the search API so ranking, authorization filtering, and pagination remain consistent across pages.", "tier": "hard"}
+{"text": "Identify why this kernel driver sometimes misses a wake interrupt after suspend and implement a robust fix.", "tier": "hard"}
+{"text": "Investigate why a Kubernetes PodDisruptionBudget blocks cluster upgrades even though the service appears overprovisioned.", "tier": "hard"}
+{"text": "Design a secure file-download flow that supports expiring links, permission changes, and CDN caching.", "tier": "hard"}
+{"text": "Add least-privilege IAM permissions for the service to read only its assigned object-storage prefix.", "tier": "moderate"}
+{"text": "Add admission-policy exceptions only for the legacy workload that cannot yet meet the baseline security policy.", "tier": "moderate"}
+{"text": "Make combat replay recording omit presentation-only events while retaining deterministic inputs.", "tier": "moderate"}
+{"text": "Investigate why the Android native crash reporter loses tombstones after a secondary process terminates.", "tier": "hard"}
+{"text": "Add an output field for prediction_score to the serving response schema.", "tier": "trivial"}
+{"text": "Add a database migration that backfills normalized phone numbers for existing customers.", "tier": "moderate"}
+{"text": "Fix the permission escalation path that occurs when a removed member retains a valid long-lived access token.", "tier": "hard"}
+{"text": "Add a scheduled cron expression that runs the daily ingestion task at 02:00 UTC.", "tier": "trivial"}
+{"text": "Prevent duplicate purchase screens when a billing callback arrives after navigation changed.", "tier": "moderate"}
+{"text": "Add the new customer_events source to the data catalog configuration.", "tier": "trivial"}
+{"text": "Fix the rollout configuration so a failed canary cannot be promoted after metrics recover only because traffic was reduced.", "tier": "hard"}
+{"text": "Configure the build job to use the repository's package-manager cache.", "tier": "trivial"}
+{"text": "Add a filter to the invoices endpoint that accepts only the supported payment states.", "tier": "moderate"}
+{"text": "Add a tag identifying this Glue job as finance data.", "tier": "trivial"}
+{"text": "Adjust the password policy validator to reject values containing the user's email local part.", "tier": "moderate"}
+{"text": "Create a runbook for responding to an expired TLS certificate using the project's current certificate issuer.", "tier": "moderate"}
+{"text": "Implement checkpoint recovery for the streaming job using its existing state-store conventions.", "tier": "moderate"}
+{"text": "Configure horizontal pod autoscaling using the metrics already exported by the API.", "tier": "moderate"}
+{"text": "Update the ingress rules so tenant subdomains reach the correct service without exposing the admin route.", "tier": "moderate"}
+{"text": "Analyze the production alert flood and redesign the rules so actionable symptoms are surfaced before downstream noise.", "tier": "hard"}
+{"text": "Update the reporting view to group anonymous visitors separately from authenticated users.", "tier": "moderate"}
+{"text": "Restrict the CI deployment credential so it can deploy staging but cannot modify production resources.", "tier": "moderate"}
+{"text": "Add a dashboard panel showing queue depth alongside worker throughput and failed-job counts.", "tier": "moderate"}
+{"text": "Implement robust handling for out-of-order CDC events, including deletes and repeated updates.", "tier": "hard"}
+{"text": "Add a security scan badge to the project documentation.", "tier": "trivial"}
+{"text": "Rename the staging table alias to stg_orders throughout this SQL query.", "tier": "trivial"}
+{"text": "Make the admin user list retain filters and page position after a role update.", "tier": "moderate"}
+{"text": "Set the default page size for the audit-log query to 25.", "tier": "trivial"}
+{"text": "Ensure file uploads reject MIME types that do not match their detected file signatures.", "tier": "moderate"}
+{"text": "Add a basic Prometheus scrape annotation to the service manifest.", "tier": "trivial"}
+{"text": "Adjust the incremental model so it processes only dates newer than its recorded watermark.", "tier": "moderate"}
+{"text": "Add an empty-state message when the notifications list has no items.", "tier": "trivial"}
+{"text": "Change the dashboard metric label from Active Users to Daily Active Users.", "tier": "trivial"}
+{"text": "Add a reusable error boundary around lazy-loaded routes with a retry action.", "tier": "moderate"}
+{"text": "Add haptic feedback when the player successfully completes a drag gesture.", "tier": "moderate"}
+{"text": "Configure the liveness probe to restart the pod after three failed checks.", "tier": "trivial"}
+{"text": "Create a dbt test ensuring each order references an existing customer key.", "tier": "moderate"}
+{"text": "Add a required email field to the account settings form.", "tier": "trivial"}
+{"text": "Modify the serving container health check to verify the model artifact has loaded successfully.", "tier": "moderate"}
+{"text": "Make the notebook load its input dataset from the configured environment rather than a local path.", "tier": "moderate"}
+{"text": "Design a supply-chain verification process that blocks unsigned or tampered build artifacts before deployment.", "tier": "hard"}
+{"text": "Add the missing break statement after this audio-command case.", "tier": "trivial"}
+{"text": "Find and correct the label leakage caused by the current customer-risk dataset construction.", "tier": "hard"}
+{"text": "Refactor the engine's job scheduler to support dependency chains while preventing worker starvation.", "tier": "hard"}
+{"text": "Update the semantic-layer metric so refunded orders reduce net revenue exactly once.", "tier": "moderate"}
+{"text": "Modify the notification query to include unread counts without issuing one query per channel.", "tier": "moderate"}
+{"text": "Add a launcher icon entry for the new Android product flavor.", "tier": "trivial"}
+{"text": "Analyze the cost and reliability tradeoffs of moving the queue workers from fixed nodes to serverless containers.", "tier": "hard"}
+{"text": "Add synthetic monitoring for the public checkout path using a non-production test account.", "tier": "moderate"}
+{"text": "Implement resumable multipart uploads with authorization checks that remain valid across interrupted browser sessions.", "tier": "hard"}
+{"text": "Create a Kubernetes ConfigMap for the non-secret application settings.", "tier": "trivial"}
+{"text": "Investigate and fix why concurrent inventory reservations can drive available stock below zero.", "tier": "hard"}
+{"text": "Add a basic endpoint test asserting that /health returns 200.", "tier": "trivial"}
+{"text": "Make the Android upload worker resume safely after the process is reclaimed.", "tier": "moderate"}
+{"text": "Review the Terraform state architecture for accidental cross-environment changes and propose isolation boundaries.", "tier": "hard"}
+{"text": "Rework the deployment pipeline so database schema changes remain compatible across rolling application versions.", "tier": "hard"}
+{"text": "Develop a safe strategy to reprocess corrupt source files after partial ingestion without creating duplicate warehouse facts.", "tier": "hard"}
+{"text": "Diagnose why physics contacts diverge between ARM and x86 builds and make the simulation sufficiently deterministic.", "tier": "hard"}
+{"text": "Add a cache-control header to the static asset server configuration.", "tier": "trivial"}
+{"text": "Evaluate the current data-validation thresholds and redesign them to distinguish real incidents from expected seasonal variation.", "tier": "hard"}
+{"text": "Add a bounded queue between the sensor interrupt path and the telemetry encoder.", "tier": "moderate"}
+{"text": "Design a secrets-delivery approach that avoids long-lived credentials in workloads while preserving local development usability.", "tier": "hard"}
+{"text": "Add accessibility labels and traits to the custom iOS segmented control.", "tier": "moderate"}
+{"text": "Add a test covering malformed Avro messages sent through the ingestion consumer.", "tier": "moderate"}
+{"text": "Modify the model registry promotion script to require a completed evaluation report.", "tier": "moderate"}
+{"text": "Append the new shader file to the renderer build source list.", "tier": "trivial"}
+{"text": "Return an empty array instead of null for users without assigned teams.", "tier": "trivial"}
+{"text": "Implement conflict-safe offline edits for the mobile web client, including reconciliation when the server version has changed.", "tier": "hard"}
+{"text": "Implement cursor-based navigation for the activity timeline using its existing chronological ordering.", "tier": "moderate"}
+{"text": "Update save-game loading to ignore unknown cosmetic fields from newer clients.", "tier": "moderate"}
+{"text": "Ensure CSV exports use a stable column order even when optional fields are absent.", "tier": "moderate"}
+{"text": "Modify the warehouse transformation to deduplicate users by the most recent updated_at value.", "tier": "moderate"}
+{"text": "Add an accessible keyboard shortcut for opening the command palette without interfering with text inputs.", "tier": "moderate"}
+{"text": "Rework the API versioning approach so old mobile clients keep functioning while new fields can evolve safely.", "tier": "hard"}
+{"text": "Add the missing partition_date column to the empty Spark DataFrame schema.", "tier": "trivial"}
+{"text": "Determine why the autoscaler oscillates between replica counts and adjust the metrics and stabilization settings.", "tier": "hard"}
+{"text": "Update the feature pipeline to fill missing numeric values using statistics learned during training.", "tier": "moderate"}
+{"text": "Change the BI report refresh interval from weekly to daily.", "tier": "trivial"}
+{"text": "Plan a secure migration from static cloud access keys to workload identity across CI jobs and Kubernetes applications.", "tier": "hard"}
+{"text": "Implement a streaming world-cell system that avoids visible seams, duplicate entities, and main-thread loading stalls.", "tier": "hard"}
+{"text": "Add a route alias for the existing password-reset page.", "tier": "trivial"}
+{"text": "Expose the server port through an environment variable with a default value.", "tier": "trivial"}
+{"text": "Register the new reports router with the main application.", "tier": "trivial"}
+{"text": "Implement a reliable compaction policy for the lakehouse table without invalidating concurrent readers or time-travel queries.", "tier": "hard"}
+{"text": "Analyze why model latency spikes only under concurrent requests and revise the serving path to eliminate the bottleneck.", "tier": "hard"}
+{"text": "Add an environment variable for the application log level.", "tier": "trivial"}
+{"text": "Fix the cross-core ordering bug in this shared-memory mailbox protocol using the correct atomic and barrier strategy.", "tier": "hard"}
+{"text": "Update the cohort-retention query to use each user's actual first purchase date.", "tier": "moderate"}
+{"text": "Diagnose the deadlock between concurrent dbt runs targeting the same incremental table and redesign their execution boundaries.", "tier": "hard"}
+{"text": "Optimize this SIMD collision routine for unaligned mobile memory while maintaining exact hit-test behavior.", "tier": "hard"}
+{"text": "Set the deployment replica count to two for the development overlay.", "tier": "trivial"}
+{"text": "Add support for landscape safe-area insets to this mobile game HUD.", "tier": "moderate"}
+{"text": "Set this Android Compose text field to single-line mode.", "tier": "trivial"}
+{"text": "Determine why the watchdog resets the device only after long idle periods and correct the power-state interaction.", "tier": "hard"}
+{"text": "Implement a low-battery rendering mode that reduces particle emission and target frame rate.", "tier": "moderate"}
+{"text": "Update the GraphQL resolver so private fields are returned only to the record owner or an administrator.", "tier": "moderate"}
+{"text": "Add a default case to this C switch that returns the existing error code.", "tier": "trivial"}
+{"text": "Add a route parameter for the invoice ID to this endpoint definition.", "tier": "trivial"}
+{"text": "Add a cache-control header to the public logo endpoint.", "tier": "trivial"}
+{"text": "Create a rollout strategy for a new embedding model that supports shadow traffic, quality comparison, and instant rollback.", "tier": "hard"}
+{"text": "Investigate why the API occasionally returns inconsistent totals when reads are split across primary and replica databases.", "tier": "hard"}
+{"text": "Investigate why a blue-green deployment occasionally sends users to mismatched frontend and backend versions.", "tier": "hard"}
+{"text": "Set the default cloud region in the infrastructure provider configuration.", "tier": "trivial"}
+{"text": "Add an environment variable for the Snowflake warehouse name.", "tier": "trivial"}
+{"text": "Update the ECS query cache when an entity gains or loses the relevant component.", "tier": "moderate"}
+{"text": "Ensure the game's loading spinner stops if scene activation is cancelled.", "tier": "moderate"}
+{"text": "Change the product import job to collect row errors and continue processing valid rows.", "tier": "moderate"}
+{"text": "Create a reusable function that standardizes timestamp columns to UTC across the ingestion jobs.", "tier": "moderate"}
+{"text": "Adjust the Helm chart so optional Redis credentials are rendered only when caching is enabled.", "tier": "moderate"}
+{"text": "Analyze the N+1 behavior in the GraphQL dashboard query and optimize it without overfetching sensitive relations.", "tier": "hard"}
+{"text": "Add a feature-flag evaluation endpoint that returns only flags visible to the calling user.", "tier": "moderate"}
+{"text": "Make this C API distinguish an invalid handle from a temporarily busy device.", "tier": "moderate"}
+{"text": "Profile and eliminate the periodic Android UI jank caused by image decoding during feed scrolling.", "tier": "hard"}
+{"text": "Design a backfill procedure for two years of partitioned event data that avoids disrupting live streaming consumers.", "tier": "hard"}
+{"text": "Implement a distributed lock around monthly invoice generation that tolerates worker crashes and retries.", "tier": "hard"}
+{"text": "Configure database connection-pool limits based on the number of API replicas and the database connection budget.", "tier": "moderate"}
+{"text": "Identify the subtle join condition causing monthly active-user counts to inflate when users have multiple devices.", "tier": "hard"}
+{"text": "Implement a GraphQL mutation that atomically moves a task between columns and updates its position.", "tier": "moderate"}
+{"text": "Configure the log shipper to collect stdout from application containers.", "tier": "trivial"}
+{"text": "Add the missing comma between these two fields in the dbt schema YAML file.", "tier": "trivial"}
+{"text": "Show a success toast after the user copies an API key.", "tier": "trivial"}
+{"text": "Add an alert rule for pods stuck in CrashLoopBackOff.", "tier": "trivial"}
+{"text": "Create a secret placeholder manifest for the third-party API token.", "tier": "trivial"}
+{"text": "Review the disaster-recovery plan for the managed database and identify gaps in restore testing, permissions, and dependencies.", "tier": "hard"}
+{"text": "Implement reliable over-the-air firmware updates with resumable chunks, integrity checks, and safe rollback behavior.", "tier": "hard"}
+{"text": "Create a GraphQL query field for fetching the currently authenticated user.", "tier": "trivial"}
+{"text": "Add a display statement showing the first ten rows of the notebook DataFrame.", "tier": "trivial"}
+{"text": "Analyze whether the current WAF rules can be bypassed through alternate host headers, encoded paths, or direct origin access.", "tier": "hard"}
+{"text": "Render field-level API validation errors beside the matching controls in the signup form.", "tier": "moderate"}
+{"text": "Diagnose why the Spark job succeeds but silently omits records after an upstream schema change.", "tier": "hard"}
+{"text": "Harden the Kubernetes multi-tenant setup against cross-namespace access through service accounts, network paths, and shared storage.", "tier": "hard"}
+{"text": "Review the authentication flow for machine-to-machine services and eliminate token replay opportunities without disrupting rotation.", "tier": "hard"}
+{"text": "Add a developer-only gesture that opens the network diagnostics screen.", "tier": "moderate"}
+{"text": "Add a blank implementation of the optional delegate callback in this iOS controller.", "tier": "trivial"}
+{"text": "Implement a versioned feature contract that lets old models and new producers coexist during rollout.", "tier": "hard"}
+{"text": "Refactor the reporting endpoint to avoid timing out on large date ranges without changing its response contract.", "tier": "hard"}
