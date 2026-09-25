@@ -1,0 +1,228 @@
+{
+  "n_test": 30,
+  "accuracy": 0.9,
+  "mean_latency_ms": 106.36919713385093,
+  "confusion_matrix": {
+    "trivial->trivial": 10,
+    "trivial->moderate": 0,
+    "trivial->hard": 0,
+    "moderate->trivial": 3,
+    "moderate->moderate": 7,
+    "moderate->hard": 0,
+    "hard->trivial": 0,
+    "hard->moderate": 0,
+    "hard->hard": 10
+  },
+  "predictions": [
+    {
+      "text": "rename the variable x to userId in this function",
+      "ground_truth": "trivial",
+      "predicted": "trivial",
+      "score": 0.2246,
+      "confidence": 0.4753
+    },
+    {
+      "text": "add a docstring to this getter method",
+      "ground_truth": "trivial",
+      "predicted": "trivial",
+      "score": 0.1576,
+      "confidence": 0.5842
+    },
+    {
+      "text": "format this JSON config file with consistent indentation",
+      "ground_truth": "trivial",
+      "predicted": "trivial",
+      "score": 0.3145,
+      "confidence": 0.3625
+    },
+    {
+      "text": "fix the typo in this error message string",
+      "ground_truth": "trivial",
+      "predicted": "trivial",
+      "score": 0.3389,
+      "confidence": 0.3294
+    },
+    {
+      "text": "add a missing semicolon to this line of code",
+      "ground_truth": "trivial",
+      "predicted": "trivial",
+      "score": 0.1342,
+      "confidence": 0.6387
+    },
+    {
+      "text": "capitalize the first letter of this log message",
+      "ground_truth": "trivial",
+      "predicted": "trivial",
+      "score": 0.0564,
+      "confidence": 0.8109
+    },
+    {
+      "text": "update the copyright year in the file header",
+      "ground_truth": "trivial",
+      "predicted": "trivial",
+      "score": 0.389,
+      "confidence": 0.2931
+    },
+    {
+      "text": "add a null check before calling .toString() on this variable",
+      "ground_truth": "trivial",
+      "predicted": "trivial",
+      "score": 0.2475,
+      "confidence": 0.4454
+    },
+    {
+      "text": "extract this magic number into a named constant",
+      "ground_truth": "trivial",
+      "predicted": "trivial",
+      "score": 0.2528,
+      "confidence": 0.4373
+    },
+    {
+      "text": "sort these import statements alphabetically",
+      "ground_truth": "trivial",
+      "predicted": "trivial",
+      "score": 0.0776,
+      "confidence": 0.7583
+    },
+    {
+      "text": "write a test for UserService.create following the pattern in OrderServiceTest",
+      "ground_truth": "moderate",
+      "predicted": "moderate",
+      "score": 0.7966,
+      "confidence": 0.0639
+    },
+    {
+      "text": "summarize what changed in this 200-line diff",
+      "ground_truth": "moderate",
+      "predicted": "moderate",
+      "score": 0.9021,
+      "confidence": 0.0132
+    },
+    {
+      "text": "add input validation to this API endpoint matching the style of the other endpoints in this file",
+      "ground_truth": "moderate",
+      "predicted": "moderate",
+      "score": 0.9052,
+      "confidence": 0.4273
+    },
+    {
+      "text": "refactor this function to extract a duplicated block into a helper, keeping behavior identical",
+      "ground_truth": "moderate",
+      "predicted": "moderate",
+      "score": 0.817,
+      "confidence": 0.0627
+    },
+    {
+      "text": "write a docstring-style summary for this undocumented module by reading its code",
+      "ground_truth": "moderate",
+      "predicted": "trivial",
+      "score": 0.4616,
+      "confidence": 0.2356
+    },
+    {
+      "text": "add pagination to this list endpoint following the pattern used elsewhere in the service",
+      "ground_truth": "moderate",
+      "predicted": "moderate",
+      "score": 0.8756,
+      "confidence": 0.3047
+    },
+    {
+      "text": "convert this callback-based function to use async/await, preserving error handling",
+      "ground_truth": "moderate",
+      "predicted": "moderate",
+      "score": 0.8048,
+      "confidence": 0.1162
+    },
+    {
+      "text": "add a new field to this data model and update the corresponding serializer",
+      "ground_truth": "moderate",
+      "predicted": "trivial",
+      "score": 0.46,
+      "confidence": 0.2323
+    },
+    {
+      "text": "write a changelog entry summarizing these three commits",
+      "ground_truth": "moderate",
+      "predicted": "trivial",
+      "score": 0.4668,
+      "confidence": 0.2131
+    },
+    {
+      "text": "add retry logic to this HTTP client call, matching the retry pattern already used in the codebase",
+      "ground_truth": "moderate",
+      "predicted": "moderate",
+      "score": 0.9478,
+      "confidence": 0.3334
+    },
+    {
+      "text": "find the race condition in this concurrent queue implementation",
+      "ground_truth": "hard",
+      "predicted": "hard",
+      "score": 1.82,
+      "confidence": 0.5452
+    },
+    {
+      "text": "design a sharding strategy for this database to handle 10x write load",
+      "ground_truth": "hard",
+      "predicted": "hard",
+      "score": 1.7194,
+      "confidence": 0.399
+    },
+    {
+      "text": "review this authentication middleware for security vulnerabilities",
+      "ground_truth": "hard",
+      "predicted": "hard",
+      "score": 1.5514,
+      "confidence": 0.2213
+    },
+    {
+      "text": "diagnose why this service intermittently deadlocks under load",
+      "ground_truth": "hard",
+      "predicted": "hard",
+      "score": 1.5894,
+      "confidence": 0.257
+    },
+    {
+      "text": "design the API contract for a new multi-tenant billing system",
+      "ground_truth": "hard",
+      "predicted": "hard",
+      "score": 1.6021,
+      "confidence": 0.2693
+    },
+    {
+      "text": "figure out why this distributed cache is returning stale data occasionally",
+      "ground_truth": "hard",
+      "predicted": "hard",
+      "score": 1.8394,
+      "confidence": 0.5783
+    },
+    {
+      "text": "propose a migration plan to move this monolith's database to a new schema with zero downtime",
+      "ground_truth": "hard",
+      "predicted": "hard",
+      "score": 1.4763,
+      "confidence": 0.1637
+    },
+    {
+      "text": "debug why this retry logic sometimes causes duplicate charges to be issued",
+      "ground_truth": "hard",
+      "predicted": "hard",
+      "score": 1.5769,
+      "confidence": 0.244
+    },
+    {
+      "text": "evaluate whether this proposed caching layer introduces a cache-stampede risk and design a mitigation",
+      "ground_truth": "hard",
+      "predicted": "hard",
+      "score": 1.4661,
+      "confidence": 0.1788
+    },
+    {
+      "text": "identify the root cause of this memory leak that only manifests after 48 hours of uptime",
+      "ground_truth": "hard",
+      "predicted": "hard",
+      "score": 1.8032,
+      "confidence": 0.5187
+    }
+  ]
+}

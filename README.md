@@ -101,9 +101,29 @@ Laya's cost is genuinely $0 per call (local inference, no metering); every LLM j
 
 **Next real step:** get a working, metered API key (Anthropic or OpenAI) and run `--with-llm` for a genuinely priced comparison — that replaces the cost estimate above with a real number. Accuracy is already independently answered by the Terra run.
 
+## v2: fine-tuning (done)
+
+Zero-shot Laya's 63% wasn't good enough to route production traffic on unsupervised (see above). `finetune/` builds a real fine-tune, following Laya's own published recipe (RLCD with a GRPO-style policy gradient, run via `train_ddp.py` from Laya's official Kaggle notebook, unmodified except for swapping in our data):
+
+1. **Data**: 4 parallel Codex/GPT-5.6 Terra calls generated 480 diverse synthetic (task, difficulty) examples across web/backend, data/ML, infra/security, and mobile/embedded/games — deduped, confirmed **zero overlap** with the original 30-example benchmark, split into 423 train / 57 held-out test (`finetune/build_dataset.py`).
+2. **Tokenization**: `finetune/build_train_items.py` runs entirely on CPU (this Mac, no GPU needed) using `laya.common.build_sequence` directly — 423/423 items built cleanly.
+3. **Training**: pushed to Kaggle (T4×2, `finetune/kaggle_kernel/`) via the `kaggle` CLI. Took two failed attempts before it actually trained: first attempt requested GPUs but got 0 (Kaggle silently ignores GPU requests on unverified accounts — needed phone verification), second attempt got GPUs but a wrong dataset-mount path (fixed by discovering the path at runtime with `glob` instead of guessing it). Training itself took a few minutes once both were fixed.
+4. **Evaluation, two ways**:
+   - **On 57 new held-out synthetic cases** (run inside the Kaggle notebook, on GPU): **91.2% accuracy**, 40.6ms mean latency. Confusion matrix showed the "hard" tier (zero-shot's weak spot) now **perfect: 19/19**.
+   - **On the original, untouched 30-example benchmark** (run locally afterward, on CPU, via `finetune/eval_v2_checkpoint.py` — the real apples-to-apples comparison against the 63% above): **90.0% accuracy** — trivial 10/10, hard 10/10, moderate 7/10 (3 misclassified as trivial, the only remaining error pattern).
+
+| | v1 (zero-shot) | v2 (fine-tuned) |
+| --- | --- | --- |
+| Accuracy on the 30-example benchmark | 63% | **90%** |
+| Confusion pattern | under-calls "hard" as "moderate" | occasionally under-calls "moderate" as "trivial"; hard tier now perfect |
+| Mean latency | ~53-57ms (CPU) | ~106ms (CPU, this checkpoint) / 40.6ms (GPU, during Kaggle eval) |
+| Cost | $0 (local) | $0 (local) |
+
++27 points from fine-tuning on 423 synthetic examples — a real, measured result, not an estimate. The remaining error pattern (some "moderate" tasks read as "trivial") is a much smaller, more specific gap than zero-shot's systematic "hard" under-calling, and a plausible next lever (more moderate-tier training examples, or ones that better separate moderate from trivial) rather than a fundamental limit.
+
 ## Open questions / next steps
 
-- **v2, in progress:** fine-tune Laya on this task and re-run the eval to see whether it closes the gap with the LLM judges (63% -> ?), especially on the "hard" tier where it's weakest
+- Grow past 423/57: this was intentionally a first pass at the low end of Laya's documented data-scale range (Laya's official recipe uses ~1,200 train cases) — more data, especially moderate-tier examples, is the likeliest next lever for the trivial/moderate confusion above
 - Run `--with-llm` with a real metered key at some point, to get a real cost number (accuracy is already answered — see the Terra result above)
 - Grow the eval set past 30 examples / get a second labeler, since a single-author 30-example set is a first signal, not a validated benchmark
 - Decide the entry point for the next step: a LiteLLM `async_pre_call_hook` integration (reuses `pick_model` from this library) vs. a standalone proxy

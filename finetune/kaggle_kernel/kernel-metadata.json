@@ -1,0 +1,16 @@
+{
+  "id": "stinzz/laya-model-router-v2-finetune",
+  "title": "laya-model-router v2 finetune",
+  "code_file": "laya-model-router-v2-finetune.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": "true",
+  "enable_gpu": "true",
+  "enable_tpu": "false",
+  "enable_internet": "true",
+  "machine_shape": "NvidiaTeslaT4",
+  "dataset_sources": ["stinzz/laya-model-router-v2-finetune-data"],
+  "competition_sources": [],
+  "kernel_sources": [],
+  "model_sources": []
+}
