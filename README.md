@@ -121,10 +121,26 @@ Zero-shot Laya's 63% wasn't good enough to route production traffic on unsupervi
 
 +27 points from fine-tuning on 423 synthetic examples — a real, measured result, not an estimate. The remaining error pattern (some "moderate" tasks read as "trivial") is a much smaller, more specific gap than zero-shot's systematic "hard" under-calling, and a plausible next lever (more moderate-tier training examples, or ones that better separate moderate from trivial) rather than a fundamental limit.
 
+## End-to-end: does the routing decision actually pay off?
+
+Everything above tests the classifier in isolation. `e2e/` asks the question that actually matters: when Laya v2 routes a task to a cheaper model per `DEFAULT_MODEL_TIERS`, does that model's real output hold up against always using the strongest model (Opus 5)? 12 self-contained coding tasks (4 per tier, real code inline, not just a one-line description) were routed through the live pipeline, each got a real completion from its assigned model *and* a real Opus 5 completion as a baseline, and — where both were genuine answers — a blind pairwise judge call (Opus 5, told nothing about which model produced which) picked a winner.
+
+**Tier accuracy on this small held-out set: 9/12.** Same error direction as before (a "hard" task occasionally read as "moderate") plus one new one (a trivial rename over-classified as "moderate" — the safe direction, since it costs more, not quality).
+
+**The actual finding: Opus 5 refused 3 of 12 completely benign tasks outright.** Not "gave a weak answer" — `stop_reason: "refusal"`, zero output, category `"cyber"` (Anthropic's real-time cyber-safeguard classifier) — on tasks that are just ordinary defensive programming: adding input-validation checks, diagnosing a timezone/billing bug, and *reviewing code for a SQL injection vulnerability* (an explicitly protective request, not an attack). A 4th task (a cache-staleness bug) was refused too, reproducibly, across two separate calls — and that one *was* correctly routed to Opus, so correct routing didn't save it; there's no fallback model configured. In all 3 of the first group, the router's cheaper pick (Sonnet, via a "hard→moderate" misclassification in two cases) answered correctly where Opus wouldn't even try.
+
+**Where a genuine quality comparison was possible** (6 tasks — excluding refusals and the tasks correctly routed straight to Opus): 6 ties, 1 real win for the cheaper model, 0 losses. The win was a real correctness bug, not judge noise: given a callback-style `db.query(sql, params, callback)`, Sonnet correctly wrapped it in a `Promise`; Opus's primary answer assumed `db.query` already returned a promise (contradicting the function it was given) and also violated the "return only code" instruction by adding prose alternatives.
+
+**Cost has a twist.** Naive routed-vs-always-Opus dollar comparison showed routing costing ~26% *more*, not less. That's an artifact, not a real cost increase: a refusal is nearly free to the token meter (near-zero output tokens), so "always Opus" looks artificially cheap on the 3 refused tasks — it paid almost nothing for zero value, while the routed model paid for a real, correct answer on those same 3 tasks. Once refusals are counted honestly, routing isn't more expensive — the raw dollar comparison was just misleading.
+
+Caveats, stated plainly: n=12 is tiny, each comparison is a single non-repeated judge call, and refusal behavior isn't necessarily deterministic across time — this is a first real signal, same standard as everything else in this repo, not a validated benchmark. Full data (every completion, verdict, and token count) is in `e2e/report.json`.
+
 ## Open questions / next steps
 
+- Add a fallback model to the router for refusals (Anthropic's own docs point at exactly this mechanism) — the `e2e/` result above means "route to a weaker tier" already accidentally works as a partial refusal-fallback, but that's luck, not design
+- Run the `e2e/` experiment on a bigger, more diverse task set now that a real API key exists — n=12 is a first signal, not a validated benchmark
 - Grow past 423/57: this was intentionally a first pass at the low end of Laya's documented data-scale range (Laya's official recipe uses ~1,200 train cases) — more data, especially moderate-tier examples, is the likeliest next lever for the trivial/moderate confusion above
-- Run `--with-llm` with a real metered key at some point, to get a real cost number (accuracy is already answered — see the Terra result above)
+- Run `evals/run_eval.py --with-llm` with the now-working metered key, to get a real cost number for the classifier-only comparison too (accuracy is already answered — see the Terra result above)
 - Grow the eval set past 30 examples / get a second labeler, since a single-author 30-example set is a first signal, not a validated benchmark
 - Decide the entry point for the next step: a LiteLLM `async_pre_call_hook` integration (reuses `pick_model` from this library) vs. a standalone proxy
 - Decide how Laya gets served once this moves beyond a single local process (still in-process/local for now)
