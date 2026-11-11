@@ -1,4 +1,4 @@
-# laya-model-router
+# llm-task-router
 
 An experiment in building a self-hosted, open-source request router that picks which LLM answers a request based on how hard the request actually is — using [Laya](https://huggingface.co/convaiinnovations/laya) as the difficulty classifier.
 
